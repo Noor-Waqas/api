@@ -29,9 +29,20 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 30000);
 
-  if (loading) return  <div style={{display:"flex",justifyContent:"center"}}><img src={LoadingImg} width={200} height={200} alt="loading"/></div> 
-  if (error) return <h2>Error: {error}</h2>;
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading)
+    return ( <div style={{ display: "flex", justifyContent: "center" }}>
+           <img src={LoadingImg} width={200} height={200} alt="loading" />
+      </div>
+    )
+      if (error) return <h2>Error: {error}</h2>;
   console.log("data",data)
 
   const handleClick = ()=>{
