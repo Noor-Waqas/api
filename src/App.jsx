@@ -5,7 +5,15 @@ function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
-  const notify = () => toast("Add to cart successfully!");
+  const [added, setAdded] = useState(false);
+ const handleClick = ()=>{
+  if (added) {
+    toast.warning("Already added to cart!");
+  } else {
+    toast.success("Add to cart successfully!");
+    setAdded(true);
+  }
+ }
 
   async function getData() {
     const url = "https://dummyjson.com/products";
@@ -51,14 +59,14 @@ function App() {
             <img src={product.thumbnail} alt={product.title}/>
             </div>
             <div style={{display:"flex",justifyContent:"center"}}>
-            <button onClick={notify} style={{backgroundColor:"black",color:"white",width:"150px",height:"50px",borderRadius:"10px",cursor:"pointer",marginBottom:"10px"}}>Add To Cart</button>
+            <button onClick={handleClick} style={{backgroundColor:"black",color:"white",width:"150px",height:"50px",borderRadius:"10px",cursor:"pointer",marginBottom:"10px"}}>Add To Cart</button>
             </div>
           </div>
           </div>
         ))}
       </div>
       </div>
-      <ToastContainer style={{fontSize:"10px"}} />
+      <ToastContainer style={{fontSize:"10px",width:"100px",height:"50px"}} />
     </div>
   );
 }
