@@ -66,7 +66,7 @@ function App() {
         ))}
       </div>
       </div>
-      <ToastContainer style={{fontSize:"10px",width:"100px",height:"50px"}} />
+      <ToastContainer style={{fontSize:"10px"}} />
     </div>
   );
 }
