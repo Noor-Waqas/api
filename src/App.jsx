@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
+  const notify = () => toast("Add to cart successfully!");
 
   async function getData() {
     const url = "https://dummyjson.com/products";
@@ -36,7 +38,7 @@ function App() {
       <div style={{display:"flex",justifyContent:"center"}}>
         <div >
         {data.map((product) => (
-          <div key={product.id} style={{border:"2px solid red",gap:"5px",display:"flex",margin:"4px",borderRadius:"10px" }}>
+          <div key={product.id} style={{gap:"5px",display:"flex",margin:"4px",borderRadius:"10px",backgroundColor:"#FCB034" }}>
             <div style={{gap:"5px"}}>
             <h1 style={{textAlign:"center"}}> Name : {product.title}</h1> 
             <div>
@@ -49,13 +51,14 @@ function App() {
             <img src={product.thumbnail} alt={product.title}/>
             </div>
             <div style={{display:"flex",justifyContent:"center"}}>
-            <button style={{backgroundColor:"black",color:"white",width:"150px",height:"50px",borderRadius:"10px",cursor:"pointer",marginBottom:"10px"}}>Add To Cart</button>
+            <button onClick={notify} style={{backgroundColor:"black",color:"white",width:"150px",height:"50px",borderRadius:"10px",cursor:"pointer",marginBottom:"10px"}}>Add To Cart</button>
             </div>
           </div>
           </div>
         ))}
       </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
