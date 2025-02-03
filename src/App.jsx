@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import LoadingImg from "./img/spinner.gif"
 
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
   const [added, setAdded] = useState(false);
- const handleClick = ()=>{
-  if (added) {
-    toast.warning("Already added to cart!");
-  } else {
-    toast.success("Add to cart successfully!");
-    setAdded(true);
-  }
- }
+ 
 
   async function getData() {
     const url = "https://dummyjson.com/products";
@@ -36,9 +30,18 @@ function App() {
     getData();
   }, []);
 
-  if (loading) return <h2>Loading...</h2>; 
+  if (loading) return  <div style={{display:"flex",justifyContent:"center"}}><img src={LoadingImg} width={200} height={200} alt="loading"/></div> 
   if (error) return <h2>Error: {error}</h2>;
   console.log("data",data)
+
+  const handleClick = ()=>{
+    if (added ) {
+      toast.warning("Already added to cart!");
+    } else {
+      toast.success("Add to cart successfully!");
+      setAdded(true);
+    }
+   }
 
   return (
     <div>
