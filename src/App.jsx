@@ -29,6 +29,7 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -66,7 +67,15 @@ function App() {
             <div>
               <p style={{textAlign:"center"}}> <strong>Price :</strong> ${product.price} </p>
               <p style={{textAlign:"center"}}>Brand : {product.brand}</p>
+              <p style={{textAlign:"center"}}>Discound : {product.discountPercentage}</p>
+              <p style={{textAlign:"center"}}>Rating : {product.rating}</p>
+              <p style={{textAlign:"center"}}>Return Policy : {product.returnPolicy}</p>
+              <p style={{textAlign:"center"}}>shipping Information : {product.shippingInformation}</p>
+              <p style={{textAlign:"center"}}>Branch Code : {product.sku}</p>
+              <p style={{textAlign:"center"}}>Stock : {product.stock}</p>
               <p style={{textAlign:"center"}}>Description: {product.description}</p>
+  
+
             </div>
             <br />
             <div style={{display:"flex",justifyContent:"center"}}>
